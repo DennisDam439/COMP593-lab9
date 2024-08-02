@@ -56,22 +56,29 @@ def handle_btn_get_info():
         #bar_special_defense
         #bar_speed
     else:
-        error_message =## finish this per requirements
+        error_message ="test "## finish this per requirements
         messagebox.showinfo(title ='Error', message =  error_message, icon='error')
 
-btn_get_info =ttk.Button(##complete this)
-btn_get_info.grid(##complete this)
+btn_get_info =ttk.Button(frm_input, text="get_info")
+btn_get_info.grid(row=0, column=2, padx=(10,5), pady=10)
 
 #populate the info frame with widgets
 lbl_height= ttk.Label(frm_info, text="Height: ")
-lbl_height.grid(##complete this)
+lbl_height.grid(row=0, column=0, padx=(10,5), pady=10)
 lbl_height_val = ttk.Label(frm_info, width =20)
-lbl_height_val.grid(##complete this)
+lbl_height_val.grid(row=0, column=1, padx=(10,5), pady=10)
                          
 ## Do the same for Weight
-lbl_weight = ##complete this
-lbl_weight.grid() ##complete this
+lbl_weight = ttk.Label(frm_info, text="weight: ")
+lbl_weight.grid(row=1, column=0, padx=(10,5), pady=10)
+lbl_weight_val = ttk.Label(frm_info, width =20)
+lbl_weight_val.grid(row=1, column=1, padx=(10,5), pady=10)
 
+## Do the same for Weight
+lbl_type = ttk.Label(frm_info, text="type: ")
+lbl_type.grid(row=2, column=0, padx=(10,5), pady=10)
+lbl_type_val = ttk.Label(frm_info, width =20)
+lbl_type_val.grid(row=2, column=1, padx=(10,5), pady=10)
 
 ##Stats frame
 STATE_MAX_VALUE = 255.0
