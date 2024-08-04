@@ -27,10 +27,10 @@ frm_info.grid(row=1, column = 0, padx=(20,10), pady=(10,20), sticky=N)
 
 ## Frame for stats
 frm_stats = ttk.LabelFrame(root, text="Stats")
-frm_stats.grid(row=1, column = 1, padx=(10,20), pady=(10,20), sticky=N)
+frm_stats.grid(row=1, column=1, padx=(10,20), pady=(10,20), sticky=N)
 
 # TODO: Populate the user input frame with widgets
-lbl_name = ttk.Label (frm_input, text="Pokemon Name:")
+lbl_name = ttk.Label(frm_input, text="Pokemon Name:")
 lbl_name.grid(row=0, column=0, padx=(10,5), pady=10)
 
 enter_name =  ttk.Entry(frm_input)
@@ -39,11 +39,12 @@ enter_name.grid(row=0, column=1)
 
 def handle_btn_get_info():
     poke_name = enter_name.get().strip()
-    if poke_name == '': return 
+    if poke_name == '': 
+        return 
     poke_info = get_pokemon_info(poke_name)
     if poke_info:
         lbl_height_val['text'] = str(poke_info['height']) + ' dm'
-        lbl_weight_val['text'] = str(poke_info['weight']) + ' hg'
+        lbl_weight_val['text'] = str(poke_info['weight']) + ' g'
         types_list = [t['type']['name'].capitalize() for t in poke_info['types']]
        
         #-----stats
@@ -69,22 +70,23 @@ lbl_height_val = ttk.Label(frm_info, width =20)
 lbl_height_val.grid(row=0, column=1, padx=(10,5), pady=10)
                          
 ## Do the same for Weight
-lbl_weight = ttk.Label(frm_info, text="weight: ")
+lbl_weight = ttk.Label(frm_info, text="Weight: ")
 lbl_weight.grid(row=1, column=0, padx=(10,5), pady=10)
 lbl_weight_val = ttk.Label(frm_info, width =20)
 lbl_weight_val.grid(row=1, column=1, padx=(10,5), pady=10)
 
 ## Do the same for type
-lbl_type = ttk.Label(frm_info, text="type: ")
+lbl_type = ttk.Label(frm_info, text="Type: ")
 lbl_type.grid(row=2, column=0, padx=(10,5), pady=10)
 lbl_type_val = ttk.Label(frm_info, width =20)
 lbl_type_val.grid(row=2, column=1, padx=(10,5), pady=10)
 
-##Stats frame
-STATE_MAX_VALUE = 255.0
-PRG_BAR_LENGHT = 200
+##Stats frame const.
+STAT_MAX_VALUE = 255.0
+PRG_BAR_LENGTH = 200
 
-label_hp = ttk.Lable(frm_stats, text = "HP:")
+#Stats frame widgets
+lbl_hp = ttk.Label(frm_stats, text = "HP:")
 lbl_hp.grid(row=0, column=0, padx=(10,5), pady=(10,5), sticky=E)
 bar_hp = ttk.Progressbar(frm_stats, length=PRG_BAR_LENGTH, maximum=STAT_MAX_VALUE)
 bar_hp.grid(row=0, column=1, padx=(0,10), pady=(10,5))
@@ -101,26 +103,19 @@ bar_defense = ttk.Progressbar(frm_stats, length=PRG_BAR_LENGTH, maximum=STAT_MAX
 bar_defense.grid(row=2, column=1, padx=(0,10), pady=5)
 
 lbl_special_attack = ttk.Label(frm_stats, text="Special Attack:")
-lbl_special_attack.grid(row=2, column=0, padx=(10,5), pady=5, sticky=E)
+lbl_special_attack.grid(row=3, column=0, padx=(10,5), pady=5, sticky=E)
 bar_special_attack = ttk.Progressbar(frm_stats, length=PRG_BAR_LENGTH, maximum=STAT_MAX_VALUE)
-bar_special_attack.grid(row=2, column=1, padx=(0,10), pady=5)
+bar_special_attack.grid(row=3, column=1, padx=(0,10), pady=5)
 
 lbl_special_defense = ttk.Label(frm_stats, text="Special Defense:")
-lbl_special_defense.grid(row=2, column=0, padx=(10,5), pady=5, sticky=E)
+lbl_special_defense.grid(row=4, column=0, padx=(10,5), pady=5, sticky=E)
 bar_special_defense = ttk.Progressbar(frm_stats, length=PRG_BAR_LENGTH, maximum=STAT_MAX_VALUE)
-bar_special_defense.grid(row=2, column=1, padx=(0,10), pady=5)
+bar_special_defense.grid(row=4, column=1, padx=(0,10), pady=5)
 
-
-
-
-
-
-
-
-
-
-
-
+lbl_speed = ttk.Label(frm_stats, text="Speed:")
+lbl_speed.grid(row=5, column=0, padx=(10,5), pady=5, sticky=E)
+bar_speed = ttk.Progressbar(frm_stats, length=PRG_BAR_LENGTH, maximum=STAT_MAX_VALUE)
+bar_speed.grid(row=5, column=1, padx=(0,10), pady=5)
 
 root.mainloop()
 
